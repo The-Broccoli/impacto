@@ -3,7 +3,7 @@ from discord.ext import commands
 import asyncio
 
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 from matchmaking import group_matchmaking
 from messages import messages
@@ -12,7 +12,7 @@ intents = discord.Intents.default()
 intents.members = True
 intents.voice_states = True
 
-load_dotenv()
+# load_dotenv()
 
 bot = commands.Bot(intents=intents)
 TOKEN = os.getenv("DISCORD_TOKEN")
