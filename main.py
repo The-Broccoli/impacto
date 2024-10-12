@@ -22,10 +22,10 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 async def on_ready():
     print(8 * '-' + ' IMPACT_TAL ' + 8 * '-')
     print(f'Services are now available.\nName: {bot.user}')
-    
+
 def is_authorized():
     async def predicate(ctx):
-        allowed_roles = ["Gildemleitung"]
+        allowed_roles = ["Gildenleitung"]
         return any(role.name in allowed_roles for role in ctx.author.roles)
     return commands.check(predicate)
 
