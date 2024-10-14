@@ -25,7 +25,7 @@ async def on_ready():
 
 def is_authorized():
     async def predicate(ctx):
-        allowed_roles = ["Gildenleitung"]
+        allowed_roles = ["Gildenleitung", "Würfelmeister"]
         return any(role.name in allowed_roles for role in ctx.author.roles)
     return commands.check(predicate)
 
