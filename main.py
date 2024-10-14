@@ -8,6 +8,7 @@ import webserver
 
 from matchmaking import group_matchmaking
 from messages import messages
+from constant import Constant
 
 intents = discord.Intents.default()
 intents.members = True
@@ -66,7 +67,7 @@ async def raidroll(ctx):
         print(f"{name}: {roles}")
 
     gruppen = group_matchmaking(user_roles)
-    embed = messages().raid_group(gruppen)
+    embed = messages().raid_group(ctx, gruppen)
 
     # # Vorübergehende Ausgabe, bis die Gruppenfunktion implementiert ist
     # response = "Erfasste Mitglieder und ihre Rollen:\n\n"
@@ -74,6 +75,14 @@ async def raidroll(ctx):
     #     role_str = "Tank" if roles[0] else "Healer" if roles[1] else "DPS" if roles[2] else "Keine Rolle"
     #     response += f"{name}: {role_str}\n"
 
+    await ctx.respond(embed=embed)
+
+@bot.slash_command(description="Erfasst Rollen der Mitglieder im Stage-Kanal", guild_ids=[748795926402826260])
+@is_authorized()
+async def demoraid(ctx):
+    user_roles = Constant.demo_raid_grops(4,4,16)
+    gruppen = group_matchmaking(user_roles)
+    embed = messages().raid_group(ctx, gruppen)
     await ctx.respond(embed=embed)
 
 # Stellen Sie sicher, dass Sie den Bot mit dem korrekten Token starten
