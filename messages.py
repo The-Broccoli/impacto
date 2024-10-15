@@ -30,5 +30,7 @@ class messages():
         embed.add_field(name=f'',
                         value=f"Die Gruppenanführer (⭐️) erstellen jetzt eine Gruppe und posten den Gruppenlink im Gilden-Chat",
                         inline=False)
+        embed.set_thumbnail(url="https://iili.io/2J5yYeS.png")
+        embed.set_author(name="Impact Würfel", icon_url="https://iili.io/2J5yYeS.png")
         embed = self.add_footer(ctx, embed)
         return embed
