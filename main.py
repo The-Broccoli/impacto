@@ -4,7 +4,6 @@ import asyncio
 
 import os
 # from dotenv import load_dotenv
-import webserver
 
 from matchmaking import group_matchmaking
 from messages import messages
@@ -86,5 +85,4 @@ async def demoraid(ctx):
     await ctx.respond(embed=embed)
 
 # Stellen Sie sicher, dass Sie den Bot mit dem korrekten Token starten
-webserver.keep_alive()
 bot.run(TOKEN)
