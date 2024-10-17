@@ -22,6 +22,7 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 async def on_ready():
     print(8 * '-' + ' IMPACT_TAL ' + 8 * '-')
     print(f'Services are now available.\nName: {bot.user}')
+    print('successfully finished startup')
 
 def is_authorized():
     async def predicate(ctx):
