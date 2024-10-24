@@ -123,13 +123,13 @@ async def on_message(message):
     if message.channel.id == channel_a_server1:
         target_channel = bot.get_channel(channel_b_server2)
         if target_channel:
-            embed = messages().mirror_message(message.content, message.author, target_channel.guild.name)
+            embed = messages().mirror_message(message.content, message.author, message.guild.name)
             await target_channel.send(embed=embed)
 
     elif message.channel.id == channel_b_server2:
         target_channel = bot.get_channel(channel_a_server1)
         if target_channel:
-            embed = messages().mirror_message(message.content, message.author, target_channel.guild.name)
+            embed = messages().mirror_message(message.content, message.author, message.guild.name)
             await target_channel.send(embed=embed)
 
 bot.run(TOKEN)
