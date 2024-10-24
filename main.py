@@ -120,21 +120,16 @@ async def on_message(message):
         return
     if not channel_a_server1 or not channel_b_server2:
         return
-    content_to_mirror = f"{message.author.display_name} sagte: {message.content}" if message.content else None
     if message.channel.id == channel_a_server1:
         target_channel = bot.get_channel(channel_b_server2)
         if target_channel:
-            if content_to_mirror:
-                embed = messages().mirror_message(message.content, message.author)
-                await target_channel.send(content_to_mirror)
-                await target_channel.send(embed=embed)
+            embed = messages().mirror_message(message.content, message.author, target_channel.guild.name)
+            await target_channel.send(embed=embed)
 
     elif message.channel.id == channel_b_server2:
         target_channel = bot.get_channel(channel_a_server1)
         if target_channel:
-            if content_to_mirror:
-                embed = messages().mirror_message(message.content, message.author)
-                await target_channel.send(content_to_mirror)
-                await target_channel.send(embed=embed)
+            embed = messages().mirror_message(message.content, message.author, target_channel.guild.name)
+            await target_channel.send(embed=embed)
 
 bot.run(TOKEN)
