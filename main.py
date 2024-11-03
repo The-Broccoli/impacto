@@ -14,8 +14,6 @@ intents.message_content = True
 bot = commands.Bot(intents=intents)
 TOKEN = 'DISCORD_TOKEN'
 
-channel_a_server1 = None
-channel_b_server2 = None
 
 @bot.event
 async def on_ready():
