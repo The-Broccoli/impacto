@@ -4,7 +4,7 @@ from discord import option
 import asyncio
 
 from matchmaking import group_matchmaking
-from messages import messages
+from messages import Messages
 from constant import Constant
 
 intents = discord.Intents.default()
@@ -66,7 +66,7 @@ async def raidroll(ctx):
         print(f"{name}: {roles}")
 
     gruppen = group_matchmaking(user_roles)
-    embed = messages().raid_group(ctx, gruppen)
+    embed = Messages().raid_group(ctx, gruppen)
 
     # # Vorübergehende Ausgabe, bis die Gruppenfunktion implementiert ist
     # response = "Erfasste Mitglieder und ihre Rollen:\n\n"
@@ -82,7 +82,7 @@ async def raidroll(ctx):
 async def demoraid(ctx):
     user_roles = Constant.demo_raid_grops(4,4,16)
     gruppen = group_matchmaking(user_roles)
-    embed = messages().raid_group(ctx, gruppen)
+    embed = Messages().raid_group(ctx, gruppen)
     await ctx.respond(embed=embed)
 
 from discord.commands import option
@@ -169,7 +169,7 @@ async def on_message(message):
             if target_channel_id:
                 target_channel = bot.get_channel(target_channel_id)
                 if target_channel:
-                    embed = messages().mirror_message(
+                    embed = Messages_on_message-().mirror_message(
                         content=message.content,
                         author=message.author,
                         guild_name=message.guild.name,
@@ -178,7 +178,7 @@ async def on_message(message):
                     )
                     await target_channel.send(embed=embed)
 
-class messages:
+class Messages_on_message:
     def mirror_message(self, content: str, author, guild_name: str, source_server: str, channel_type: str):
         embed = discord.Embed(
             description=content,

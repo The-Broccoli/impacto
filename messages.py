@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-class messages():
+class Messages():
 
     def __init__(self):
         self.botVersion = '0.2'
