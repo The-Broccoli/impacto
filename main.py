@@ -169,7 +169,7 @@ async def on_message(message):
             if target_channel_id:
                 target_channel = bot.get_channel(target_channel_id)
                 if target_channel:
-                    embed = Messages_on_message-().mirror_message(
+                    embed = Messages_on_message().mirror_message(
                         content=message.content,
                         author=message.author,
                         guild_name=message.guild.name,

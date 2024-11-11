@@ -39,9 +39,9 @@ class Messages():
         embed = self.add_footer_raid(ctx, embed)
         return embed
 
-    def mirror_message(self, content, author, serverName):
-        embed = discord.Embed(title='',
-                            color=discord.Color.dark_grey(),
-                            description=content)
-        embed = self.add_footer_mirror(author, embed, serverName)
-        return embed
+    # def mirror_message(self, content, author, serverName):
+    #     embed = discord.Embed(title='',
+    #                         color=discord.Color.dark_grey(),
+    #                         description=content)
+    #     embed = self.add_footer_mirror(author, embed, serverName)
+    #     return embed
