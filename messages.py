@@ -45,3 +45,17 @@ class Messages():
     #                         description=content)
     #     embed = self.add_footer_mirror(author, embed, serverName)
     #     return embed
+
+    def signup(self, ctx, notsignup, eID, var1, var2):
+        embed = discord.Embed(
+            title=f'Nicht registriert?\n{eID}',
+            color=discord.Color.random(),
+            description='Diese Member haben nicht mit dem Event interagiert oder stehen nicht als eingetragenes Mitglied in der Member-Datenbank.'
+        )
+        # Namen in Gruppen von 10 aufteilen
+        for i in range(0, len(notsignup), 10):
+            # Namen in der aktuellen Gruppe als Zeichenkette zusammenfügen
+            group = '\n'.join(notsignup[i:i + 10])
+            embed.add_field(name=f"", value=group, inline=True)
+            embed.set_footer(text=f'{var1 - var2} ({var2} von {var1})')
+        return embed

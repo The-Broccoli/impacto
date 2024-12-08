@@ -97,7 +97,7 @@ channels = {
 }
 
 # List of allowed server IDs
-ALLOWED_SERVERS = [748795926402826260, 480418209099546665]  # Add your other server IDs
+ALLOWED_SERVERS = [893200897016999996, 480418209099546665]  # Add your other server IDs
 
 @bot.slash_command(
     name="showmirrorchannels",
@@ -190,4 +190,6 @@ class Messages_on_message:
         )
         return embed
 
+
+bot.load_extension("cogs.stats")
 bot.run(TOKEN)
