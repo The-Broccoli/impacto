@@ -18,9 +18,11 @@ class Stats(commands.Cog):
         
         status_mapping = {
             'Dps': 2,
+            'DD': 2,
             'Healer': 2,
             'Tank': 2,
             'assasine': 2,
+            'Assasine': 2,
             'Tentative': 3,
             'Absence': 3
         }
@@ -57,15 +59,15 @@ class Stats(commands.Cog):
                         except discord.NotFound:
                             user_with_status_0.append(f"Unbekannt (ID: {discord_id})")
                         except discord.HTTPException as e:
-                            await ctx.edit(embed=embed)(f"Fehler beim Abrufen der ID {discord_id}: {e}")
+                            await ctx.edit(content=f"Fehler beim Abrufen der ID {discord_id}: {e}")
                     embed = Messages().signup(ctx, user_with_status_0, title, len(ids_with_status_0), len(self.members))
-                    await ctx.edit(embed=embed)
+                    await ctx.edit(content=f"", embed=embed)
                 else:
-                    await ctx.edit(embed=embed)("Es sind keine Member bekannt", ephemeral=True)
+                    await ctx.edit(content="Es sind keine Member bekannt")
             else:
-                await ctx.edit(embed=embed)("Das Raid-Helper Event wurde **nicht gefunden**!", ephemeral=True)
+                await ctx.edit(content="Das Raid-Helper Event wurde **nicht gefunden**!")
         except Exception as e:
-            await ctx.respond(f"Ein unerwarteter Fehler ist aufgetreten: {e}", ephemeral=True)
+            await ctx.edit(content=f"Ein unerwarteter Fehler ist aufgetreten: {e}")
             raise
 
 
