@@ -192,4 +192,5 @@ class Messages_on_message:
 
 
 bot.load_extension("cogs.stats")
+bot.load_extension("cogs.names")
 bot.run(TOKEN)
