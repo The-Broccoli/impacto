@@ -29,35 +29,51 @@ class NameTags():
                     'Dawnbringer': r'[dD][aA][wW][nN][bB][rR][iI][nN][gG][eE][rR]'
                 }
             ],
-            'Aura': [
-                '[A]',
-                r'[\[][aA][\]]',
+            'Crimson': [
+                '[CR]',
+                r'[\[][cC][rR][\]]',
                 {
-                    'A': r'[aA]',
-                    'Aura': r'[aA][uU][rR][aA]'
+                    'CR': r'[cC][rR]',
+                    'Crimson': r'[cC][rR][iI][mM][sS][oO][nN]'
                 }
             ],
-            'KrawallKommando': [
-                '[KK]',
-                r'[\[][kK][kK][\]]',
+            'Starlight': [
+                '[SL]',
+                r'[\[][sS][lL][\]]',
                 {
-                    'KK': r'[kK][kK]',
-                    'KrawallKommando': r'[kK][rR][aA][wW][aA][lL][lL][kK][oO][mM][mM][aA][nN][dD][oO]'
+                    'SL': r'[sS][lL]',
+                    'Starlight': r'[sS][tT][aA][rR][lL][iI][gG][hH][tT]'
                 }
             ],
-            'Hakuna Matata': [
-                '[HM]',
-                r'[\[][hH][mM][\]]',
+            'Endgame': [
+                '[EG]',
+                r'[\[][eE][gG][\]]',
                 {
-                    'HM': r'[hH][mM]',
-                    'Hakuna Matata': r'[hH][aA][kK][uU][nN][aA][mM][aA][tT][aA][tT][aA]'
+                    'EG': r'[eE][gG]',
+                    'Endgame': r'[eE][nN][dD][gG][aA][mM][eE]'
                 }
             ]
         }
 
-    async def magic(self, after: discord.ClientUser):
+    async def magic(self, after: discord.Member):
+        if not after.guild.me.guild_permissions.manage_nicknames:
+            print("Bot hat nicht die Berechtigung 'Mitglieder verwalten'.")
+            return
+    
         role_keys = set(self.roleDic.keys())
+        tactical_role = "DEMO-Taktische-Leitung"
+        special_prefix = "✦"
+    
         for a_role in after.roles:
+            if a_role.name == tactical_role:
+                if not after.display_name.startswith(special_prefix):
+                    new_name = f"{special_prefix} {after.display_name}"
+                    try:
+                        await after.edit(nick=new_name)
+                    except discord.Forbidden:
+                        print(f"Keine Berechtigung, den Nickname von {after.display_name} zu ändern.")
+                    return
+    
             if a_role.name in role_keys:
                 relist = self.roleDic[a_role.name]
                 var1 = relist[1]
@@ -76,19 +92,9 @@ class NameTags():
                         return
     
                 new_name = relist[0] + ' ' + after.display_name
+                print(f"Trying to set new name: {new_name}")
                 try:
                     await after.edit(nick=new_name)
                 except discord.Forbidden:
                     print(f"Keine Berechtigung, den Nickname von {after.display_name} zu ändern.")
                 return
-    
-        rollen = [role for role in after.roles if role.name != "@everyone"]
-        if not any(roll.name in role_keys for roll in rollen):
-            for key, relist in self.roleDic.items():
-                if re.search(relist[1], after.display_name):
-                    new_name = re.sub(relist[1], '', after.display_name)
-                    try:
-                        await after.edit(nick=new_name)
-                    except discord.Forbidden:
-                        print(f"Keine Berechtigung, den Nickname von {after.display_name} zu ändern.")
-                    return
