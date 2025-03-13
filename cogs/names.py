@@ -29,12 +29,12 @@ class NameTags():
                     'Dawnbringer': r'[dD][aA][wW][nN][bB][rR][iI][nN][gG][eE][rR]'
                 }
             ],
-            'Crimson': [
-                '[CR]',
-                r'[\[][cC][rR][\]]',
+            'MirmidOnes': [
+                '[MO]',
+                r'[\[][mM][oO][\]]',
                 {
-                    'CR': r'[cC][rR]',
-                    'Crimson': r'[cC][rR][iI][mM][sS][oO][nN]'
+                    'MO': r'[mM][oO]',
+                    'MirmidOnes': r'[mM][iI][rR][mM][iI][dD][oO][nN][eE][sS]'
                 }
             ],
             'Starlight': [
@@ -45,12 +45,12 @@ class NameTags():
                     'Starlight': r'[sS][tT][aA][rR][lL][iI][gG][hH][tT]'
                 }
             ],
-            'Endgame': [
-                '[EG]',
-                r'[\[][eE][gG][\]]',
+            'ELLHN': [
+                '[EL]',
+                r'[\[][eE][lL][\]]',
                 {
-                    'EG': r'[eE][gG]',
-                    'Endgame': r'[eE][nN][dD][gG][aA][mM][eE]'
+                    'SL': r'[eE][lL]',
+                    'Starlight': r'[eE][lL][lL][hH][nN]'
                 }
             ]
         }
