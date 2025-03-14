@@ -83,7 +83,8 @@ class GoogleSheetAutomation:
                 ).execute()
                 print(f"Folgende Zeilen wurden gelöscht: {rows_to_delete}")
             else:
-                print("Keine veralteten Einträge zum Löschen gefunden.")
+                # print("Keine veralteten Einträge zum Löschen gefunden.")
+                pass
     
             # 3. Abrufen der verbleibenden Daten, um die letzte gültige Uhrzeit zu finden
             result_after_delete = self.service.spreadsheets().values().get(

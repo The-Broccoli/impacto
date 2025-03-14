@@ -1,6 +1,8 @@
 from discord.ext import commands, tasks
 import discord
 import datetime
+import gc
+
 
 from sheetAutomation import GoogleSheetAutomation
 
@@ -24,6 +26,8 @@ class Rain(commands.Cog):
         
         l: str = f"for rain in {last_valid_time} min"
         await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=l))
+
+        gc.collect()
 
     @set_activity.before_loop
     async def before_set_activity(self):
